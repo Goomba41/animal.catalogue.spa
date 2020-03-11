@@ -1,0 +1,96 @@
+import Vue from "vue";
+import Router from "vue-router";
+import NProgress from "nprogress";
+
+import Home from "./views/Home.vue";
+import Animals from "./views/Animals.vue";
+import Animal from "./views/Animal.vue";
+import Opd from "./views/Opd.vue";
+import Publication from "./views/Publication.vue";
+import Cookie from "./views/Cookie.vue";
+
+Vue.use(Router);
+
+const router = new Router({
+  mode: "history",
+  linkActiveClass: "active",
+  base: process.env.BASE_URL,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
+  routes: [
+    {
+      path: "/",
+      name: "home",
+      component: Home,
+      meta: {
+        title: "Каталог бездомных собак и кошек Кирова. Возьми себе друга!"
+      },
+      children: [
+        {
+          path: "info/opd",
+          name: "opd",
+          component: Opd,
+          meta: {
+            title: "Обработка персональных данных"
+          }
+        },
+        {
+          path: "info/public",
+          name: "publication",
+          component: Publication,
+          meta: {
+            title: "Публикация в каталоге"
+          }
+        },
+        {
+          path: "info/cookie",
+          name: "cookie",
+          component: Cookie,
+          meta: {
+            title: "Политика cookie"
+          }
+        },
+        {
+          path: ":category",
+          name: "animals",
+          component: Animals,
+          meta: {
+            title: "Возьми себе друга!"
+          },
+          children: [
+            {
+              path: ":animal",
+              name: "animal",
+              component: Animal,
+              meta: {
+                title: "Возьми себе друга!"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+});
+
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title}`;
+  next();
+});
+
+// Перед загрузкой страницы старт прогресс-бара
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    NProgress.start();
+  }
+  next();
+});
+
+// После загрузки завершить отсчет прогресс-бара
+// eslint-disable-next-line
+router.afterEach((to, from) => {
+  NProgress.done();
+});
+
+export default router;

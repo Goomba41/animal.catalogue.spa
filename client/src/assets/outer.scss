@@ -1,0 +1,279 @@
+// Fonts import
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700&display=swap&subset=cyrillic,cyrillic-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap&subset=cyrillic,cyrillic-ext');
+
+// Custom theme colors add to Bootstrap
+$theme-colors: (
+  "custom-black": #17252a,
+  "custom-green-dark": #2b7a78,
+  "custom-green": #3aafa9,
+  "custom-gray": #def2f1,
+  "custom-white": #feffff,
+  "vk": #4c75a3,
+  "instagram": #e4405f
+);
+
+$social-colors: (
+  "vk": #4c75a3,
+  "instagram": #e4405f
+);
+
+$vk: #4c75a3;
+$instagram: #e4405f;
+
+// Bootstrap variables overrides
+$body-bg: map-get($theme-colors, "custom-green");
+$body-color: map-get($theme-colors, "custom-white");
+
+$yiq-text-dark: map-get($theme-colors, "custom-green");
+// $yiq-text-light: map-get($theme-colors, "custom-green");
+
+$link-color: map-get($theme-colors, "custom-gray");
+$link-decoration: none;
+$link-hover-color: darken(map-get($theme-colors, "custom-gray"), 10%);
+$link-hover-decoration: none;
+
+$component-active-color: map-get($theme-colors, "custom-white");
+$component-active-bg: map-get($theme-colors, "custom-green-dark");
+
+$card-border-width: 0;
+$card-border-radius: 0;
+$card-bg: map-get($theme-colors, "custom-green-dark");
+
+$text-muted: map-get($theme-colors, "custom-gray");
+
+$font-family-base: "Roboto Condensed";
+
+// Bootstrap import
+@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap-vue/src/index.scss";
+
+// Custom SCSS
+.logo-text {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 900;
+  color: theme-color("custom-gray");
+
+  @include media-breakpoint-only(xs) { font-size: 2rem; }
+  @include media-breakpoint-only(sm) { font-size: 4rem; }
+  @include media-breakpoint-only(md) { font-size: 6rem; }
+  @include media-breakpoint-only(lg) { font-size: 6rem; }
+  @include media-breakpoint-only(xl) { font-size: 6rem; }
+}
+
+#services, #contacts { font-size: .7rem; }
+#services .nav .nav-item, #contacts .nav .nav-item {
+  border-right: 1px solid;
+  a { padding: 0 .4rem; }
+  &:last-child { border-right: 0; }
+}
+
+#socials { button { padding: .25rem; } }
+
+.nav-link { font-weight: 100; }
+
+.card-title { font-size: 1.5rem; text-transform: uppercase; margin:0; font-weight: 400}
+.card-subtitle { font-size: .8rem; margin:0; }
+.card-body {
+  padding: 2rem;
+  hr {
+    border-style: none none solid none;
+    border-width: 5px 0;
+    margin: 25px 0;
+    width: 20px;
+    text-align: center;
+    align-self: center;
+  }
+}
+
+#content:hover .grid-cell:not(:hover) {
+  opacity: .5;
+  transition: all 0.5s ease-in-out;
+}
+#content:hover .overlay:hover {
+  .carousel {
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+  }
+  .card-body {
+    opacity: .75;
+    background-color: map-get($theme-colors, "custom-green-dark");
+    transition: all 0.5s ease-in-out;
+  }
+}
+.overlay .card-body{
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+#content, .grid-cell, #content .overlay .carousel {
+  transition: all 0.5s ease-in-out;
+}
+
+.left > div > .carousel:before {
+  border-left-color: map-get($theme-colors, "custom-green-dark") !important;
+  left: 0%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(194, 225, 245, 0);
+  border-left-color: #fff;
+  border-width: 18px;
+  margin-top: -18px;
+  z-index: 2;
+}
+.right > div > .carousel:before {
+  border-right-color: map-get($theme-colors, "custom-green-dark") !important;
+  right: 0%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(194, 225, 245, 0);
+  border-right-color: #fff;
+  border-width: 18px;
+  margin-top: -18px;
+  z-index: 2;
+}
+
+
+@each $key, $value in $social-colors {
+  .link-#{$key} {
+    transition: all 0.5s ease-in-out;
+    &:hover { color: $value; }
+  }
+}
+
+#nprogress .bar {
+  background: map-get($theme-colors, "custom-gray");
+}
+
+ul.bullets-none {
+  list-style-type: none;
+}
+
+ul.card-small-description, ul.card-big-description {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-weight: 400;
+}
+
+ul.card-small-description {
+  font-size: 0.7rem;
+}
+ul.card-big-description {
+  font-size: 1rem;
+}
+
+.blueimp-gallery-controls > a > svg {
+  pointer-events: none;
+}
+
+.blueimp-gallery>.next, .blueimp-gallery>.prev {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    margin-top: -23px;
+    font-size: 4rem;
+    opacity: .5;
+    cursor: pointer;
+    display: none;
+}
+
+.image {
+  float: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 1%;
+  margin-bottom: 1%;
+  height: 200px;
+  -webkit-transition: opacity .4s ease-out;
+  -moz-transition: opacity .4s ease-out;
+  -o-transition: opacity .4s ease-out;
+  transition: opacity .4s ease-out;
+  transition-property: opacity;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+  transition-delay: 0s;
+  cursor: pointer;
+}
+
+.blueimp-gallery {
+  background: map-get($theme-colors, "custom-green") !important;
+}
+
+button.contact-button,
+button.contact-button:focus,
+button.contact-button.focus,
+button.contact-button:not(:disabled):not(.disabled):active,
+button.contact-button:not(:disabled):not(.disabled).active,  {
+  background-color: map-get($theme-colors, "custom-white");
+  border-color: map-get($theme-colors, "custom-white");
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+button.contact-button:hover,
+button.contact-button:focus:hover,
+button.contact-button.focus:hover,
+button.contact-button:not(:disabled):not(.disabled):active:hover,
+button.contact-button:not(:disabled):not(.disabled).active:hover, {
+    color: map-get($theme-colors, "custom-green");
+    background-color: darken(map-get($theme-colors, "custom-gray"), 10%);
+    border-color: darken(map-get($theme-colors, "custom-gray"), 20%);
+}
+
+
+
+.line-height-normal {
+  line-height: normal;
+}
+
+span.ymaps-geolink:after {
+  content: none;
+}
+
+.footnote a, span.ymaps-geolink, .cookie-alert a, p a, ul.links li a {
+  border-bottom: 1px dotted;
+  text-decoration: none;
+  background-color: transparent;
+  transition: color .2s ease-in-out, border-color .2s ease-in-out;
+}
+
+span.ymaps-geolink {
+  color: inherit;
+}
+
+.footnote a:hover, span.ymaps-geolink:hover, .cookie-alert a:hover {
+  border-bottom-color: transparent;
+}
+
+.contact-button a {
+  color: inherit;
+}
+
+$border-width-custom: 0.5rem;
+
+@each $color, $value in $theme-colors {
+  .border-#{$color}-top {
+    border-top: $border-width-custom solid $value !important;
+  }
+  .border-#{$color}-right {
+    border-right: $border-width-custom solid $value !important;
+  }
+  .border-#{$color}-bottom {
+    border-bottom: $border-width-custom solid $value !important;
+  }
+  .border-#{$color}-left {
+    border-left: $border-width-custom solid $value !important;
+  }
+}
