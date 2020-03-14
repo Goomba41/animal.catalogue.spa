@@ -16,11 +16,14 @@
       мобильном устройстве, и обеспечивают более эффективную работу сайта
       (<b-link
         target="_blank"
-        class="text-warning"
+        class="text-warning attention"
         href="https://ru.wikipedia.org/wiki/Cookie"
         >подробнее о cookie</b-link
       >). Продолжая просматривать данный сайт, Вы соглашаетесь с
-      <b-link target="_blank" class="text-warning" :to="{ name: 'cookie' }"
+      <b-link
+        target="_blank"
+        class="text-warning attention"
+        :to="{ name: 'cookie' }"
         >использованием файлов cookie</b-link
       >
       и принимаете условия.

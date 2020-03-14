@@ -242,7 +242,7 @@ span.ymaps-geolink:after {
   content: none;
 }
 
-.footnote a, span.ymaps-geolink, .cookie-alert a, p a, ul.links li a {
+a.attention, span.ymaps-geolink {
   border-bottom: 1px dotted;
   text-decoration: none;
   background-color: transparent;
@@ -253,7 +253,7 @@ span.ymaps-geolink {
   color: inherit;
 }
 
-.footnote a:hover, span.ymaps-geolink:hover, .cookie-alert a:hover {
+a.attention:hover, span.ymaps-geolink:hover {
   border-bottom-color: transparent;
 }
 

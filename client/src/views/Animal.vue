@@ -91,12 +91,12 @@
         {{ animalCurrent.conditions.keepIn }}</template
       >.
     </b-row>
-    <b-row
-      class="text-justify p-0 pb-5 text-warning footnote line-height-normal"
-    >
+    <b-row class="text-justify p-0 pb-5 text-warning line-height-normal">
       * Если вы позвонили, а животное уже пристроено, или у вас возникли
       сложности в общении с куратором, пожалуйста,
-      <a href="#" class="text-warning ml-1"> свяжитесь с нами</a>.
+      <b-link :to="{ name: 'feedback' }" class="text-warning ml-1 attention">
+        свяжитесь с нами</b-link
+      >.
     </b-row>
     <b-row class="text-justify p-0 pb-3">
       <b-col class="text-left">

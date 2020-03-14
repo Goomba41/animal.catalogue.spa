@@ -17,9 +17,9 @@
         {{ category.title }}
       </b-nav-item>
       <!-- Страница с нашедшими дом -->
-      <b-nav-item>Все дома!</b-nav-item>
+      <b-nav-item :to="{ name: 'chosen' }">Все дома!</b-nav-item>
       <!-- Страница для поддержки -->
-      <b-nav-item>Поддержать</b-nav-item>
+      <b-nav-item :to="{ name: 'support' }">Поддержать</b-nav-item>
 
       <!-- Информационные страницы -->
       <b-nav-item-dropdown text="Информация" right>
@@ -32,6 +32,9 @@
           </b-dropdown-item>
         </b-dropdown-group>
         <b-dropdown-group header="Прочая информация">
+          <b-dropdown-item :to="{ name: 'foundling' }">
+            Нашли животное?
+          </b-dropdown-item>
           <b-dropdown-item :to="{ name: 'publication' }">
             Размещение в каталоге
           </b-dropdown-item>

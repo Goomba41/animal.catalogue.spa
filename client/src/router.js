@@ -5,9 +5,13 @@ import NProgress from "nprogress";
 import Home from "./views/Home.vue";
 import Animals from "./views/Animals.vue";
 import Animal from "./views/Animal.vue";
-import Opd from "./views/Opd.vue";
 import Publication from "./views/Publication.vue";
+import Foundling from "./views/Foundling.vue";
+import Opd from "./views/Opd.vue";
 import Cookie from "./views/Cookie.vue";
+import Support from "./views/Support.vue";
+import Chosen from "./views/Chosen.vue";
+import Feedback from "./views/Feedback.vue";
 
 Vue.use(Router);
 
@@ -28,14 +32,6 @@ const router = new Router({
       },
       children: [
         {
-          path: "info/opd",
-          name: "opd",
-          component: Opd,
-          meta: {
-            title: "Обработка персональных данных"
-          }
-        },
-        {
           path: "info/public",
           name: "publication",
           component: Publication,
@@ -44,11 +40,51 @@ const router = new Router({
           }
         },
         {
+          path: "info/foundling",
+          name: "foundling",
+          component: Foundling,
+          meta: {
+            title: "Нашли животное?"
+          }
+        },
+        {
+          path: "info/opd",
+          name: "opd",
+          component: Opd,
+          meta: {
+            title: "Обработка персональных данных"
+          }
+        },
+        {
           path: "info/cookie",
           name: "cookie",
           component: Cookie,
           meta: {
             title: "Политика cookie"
+          }
+        },
+        {
+          path: "support",
+          name: "support",
+          component: Support,
+          meta: {
+            title: "Поддержите нас!"
+          }
+        },
+        {
+          path: "chosen",
+          name: "chosen",
+          component: Chosen,
+          meta: {
+            title: "Поддержите нас!"
+          }
+        },
+        {
+          path: "feedback",
+          name: "feedback",
+          component: Feedback,
+          meta: {
+            title: "Поддержите нас!"
           }
         },
         {

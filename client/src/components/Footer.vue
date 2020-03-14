@@ -31,8 +31,14 @@
       </b-row>
       <b-row id="services" align-h="center" align-v="center">
         <b-nav align="center">
-          <b-nav-item href="#foo">Заказать фотосессию</b-nav-item>
-          <b-nav-item href="#foo">Размещение в каталоге</b-nav-item>
+          <b-nav-item
+            target="_blank"
+            href="https://forms.yandex.ru/u/5e4b6aad3775d6014ccbec1c/"
+            >Заказать фотосессию</b-nav-item
+          >
+          <b-nav-item :to="{ name: 'publication' }"
+            >Размещение в каталоге</b-nav-item
+          >
         </b-nav>
       </b-row>
     </b-col>

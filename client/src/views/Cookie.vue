@@ -1,18 +1,18 @@
 <template>
   <b-row class="mb-5">
-    <b-col>
-      <h1 class="mb-5">Политика использования cookie-файлов</h1>
-      <p class="text-justify">
+    <b-col class="text-justify">
+      <h1 class="mb-5 text-center">Политика использования cookie-файлов</h1>
+      <p>
         Это уведомление о файлах cookie предназначено для посетителей наших
         сайтов и приложений. В нем указано, как сайт -------- использует файлы
         cookie.
       </p>
-      <p class="text-justify">
+      <p>
         Поскольку эти файлы cookie не являются строго необходимыми для
         предоставления --------, мы попросим вас дать согласие на использование
         файлов cookie при первом посещении нашего веб-сайта.
       </p>
-      <p class="text-justify">
+      <p>
         Это официальная политика Cookie, регулирующая использование веб-сайта
         --------, расположенного по адресам https://--------, https://--------,
         а также других веб-сайтов и других адресов Интернета (или, например,
@@ -22,31 +22,31 @@
       <!-- <p class="text-justify">
         Веб-сайты, расположенные по адресу http://www.gako-файловkirov.ru, http://gaspiko.ru, http://galsko.ru, являются официальными сайтами структурных подразделений (или филиалов) КОГБУ «ЦГАКО», и ниже приведенная политика Cookie полностью применяется к этим объектам.
       </p> -->
-      <p class="text-justify">
+      <p>
         Мы используем cookie-файлы и иные схожие технологии для того, чтобы
         отличить вас от других пользователей нашего ресурса. Это позволяет
         обеспечивать удобный просмотр нашего сайта, а также даёт возможность
         улучшать его.
       </p>
       <h2>Что такое cookie-файлы?</h2>
-      <p class="text-justify">
+      <p>
         Cookie-файлы представляют собой небольшие фрагменты данных (или строка
         букв и цифр), которые сохраняются в браузере компьютера, мобильного
         телефона или другого устройства после посещения веб-сайтов. Cookie-файлы
         широко применяются для поддержания работы веб-сайтов и сбора статистики.
       </p>
       <h2>Как мы используем cookie-файлы?</h2>
-      <p class="text-justify">
+      <p>
         Информация, которую мы собираем с помощью файлов cookie-файлов, помогает
         нам анализировать то, как используется наш веб-сайт, чтобы мы могли
         сделать его максимально удобным и функциональным.
       </p>
-      <p class="text-justify">
+      <p>
         Персональные данные сохраняются в cookie-файлах, если вы согласились на
         их использование.
       </p>
       <h2>Какие типы cookie-файлов мы используем?</h2>
-      <p class="text-justify">
+      <p>
         Есть два вида файлов cookie:
       </p>
       <ul>
@@ -64,17 +64,17 @@
           все файлы cookie сеанса удаляются.
         </li>
       </ul>
-      <p class="text-justify">
+      <p>
         Файлы сookies имеют различные функции и могут быть классифицированы
         различным образом.
       </p>
-      <p class="text-justify">
+      <p>
         Нами используются следующие типы cookie-файлов:
       </p>
       <ul>
         <li>
           <h4>Технические cookie-файлы</h4>
-          <p class="text-justify">
+          <p>
             Использование этих функциональных cookie-файлов нельзя запретить при
             посещении нашего сайта, так как они обеспечивают корректную работу
             веб-сайта. Эти файлы cookies не собирают информацию о вас, которая
@@ -84,7 +84,7 @@
         </li>
         <li>
           <h4>Cookie-файлы сеанса посещения и cookie-файлы предпочтений</h4>
-          <p class="text-justify">
+          <p>
             Срок действия таких cookie-файлов истекает по окончании сеанса
             посещения. Мы также можем использовать cookie-файлы, которые
             действуют дольше и создаются для того, чтобы запомнить ваши
@@ -94,7 +94,7 @@
         </li>
         <li>
           <h4>Аналитические файлы cookie</h4>
-          <p class="text-justify">
+          <p>
             Мы используем средства веб-аналитики с целью общего анализа
             использования сайта и получения исходных данных для улучшения наших
             предложений. Полученная при этом информация может передаваться в
@@ -102,10 +102,10 @@
             обрабатываться там. Мы можем использовать аналитические инструменты
             и соответствующие cookie-файлы следующих поставщиков услуг:
           </p>
-          <p class="text-justify">
+          <p>
             Яндекс.Метрика:
             <a
-              class="text-warning"
+              class="text-warning attention"
               href="https://yandex.ru/legal/confidential/"
             >
               Политика конфиденциальности Яндекс
@@ -114,7 +114,7 @@
         </li>
         <li>
           <h4>Функциональные файлы cookie</h4>
-          <p class="text-justify">
+          <p>
             Позволяют пользователям настраивать, как веб-сайт видит их. Файлы
             могут запоминать имена пользователей, языковые предпочтения и
             регионы и могут использоваться для предоставления более личных
@@ -124,23 +124,23 @@
         </li>
       </ul>
       <h2>Как можно разрешить или запретить использование cookie-файлов?</h2>
-      <p class="text-justify">
+      <p>
         Большинство браузеров автоматически принимают cookie-файлы. На вашем
         устройстве вы можете удалить сохраненные cookie-файлы в любое время. Как
         это делается более подробно, вы можете найти в инструкции по
         использованию вашего браузера или устройстве производителя.
       </p>
-      <p class="text-justify">
+      <p>
         В настройках браузера также можно запретить любые cookie-файловфайлы или
         только определенные. Однако все браузеры отличаются друг от друга,
         поэтому более подробная информация о настройках для cookie-файлов
         приведена в разделе Help («Справка») вашего браузера или по ссылкам:
       </p>
-      <ul class="links">
+      <ul>
         <li>
           <a
             href="https://support.google.com/chrome/answer/95647?hl=ru"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://support.google.com/chrome/answer/95647?hl=ru (Chrome);
           </a>
@@ -148,7 +148,7 @@
         <li>
           <a
             href="https://support.mozilla.org/ru/kb/uluchshennaya-zashita-ot-otslezhivaniya-v-firefox-?redirectlocale=ru-RU&redirectslug=enable-and-disable-cookies-website-preferences"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://support.mozilla.org/ru/kb/uluchshennaya-zashita-ot-otslezhivaniya-v-firefox-?redirectlocale=ru-RU&redirectslug=enable-and-disable-cookies-website-preferences
             (Firefox);
@@ -157,7 +157,7 @@
         <li>
           <a
             href="https://help.opera.com/ru/latest/web-preferences/"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://help.opera.com/ru/latest/web-preferences/ (Opera);
           </a>
@@ -165,7 +165,7 @@
         <li>
           <a
             href="https://support.microsoft.com/ru-ru/help/17442/windows-internet-explorer-delete-manage-cookies"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://support.microsoft.com/ru-ru/help/17442/windows-internet-explorer-delete-manage-cookies
             (Internet Explorer);
@@ -174,7 +174,7 @@
         <li>
           <a
             href="https://support.apple.com/ru-ru/guide/safari/sfri11471/mac"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://support.apple.com/ru-ru/guide/safari/sfri11471/mac (Safari);
           </a>
@@ -182,14 +182,14 @@
         <li>
           <a
             href="https://support.microsoft.com/ru-ru/help/4468242/microsoft-edge-browsing-data-and-privacy"
-            class="text-warning"
+            class="text-warning attention"
           >
             https://support.microsoft.com/ru-ru/help/4468242/microsoft-edge-browsing-data-and-privacy
             (Edge);
           </a>
         </li>
       </ul>
-      <p class="text-justify">
+      <p>
         Блокирование всех файлов cookie будет иметь негативное влияние на
         удобство использования многих веб-сайтов. Если вы заблокируете файлы
         cookie, вы не сможете использовать все функции на нашем веб-сайте.
