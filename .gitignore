@@ -1,4 +1,6 @@
 # Site specific
+*.sublime-project
+*.sublime-workspace
 conf.py
 media/animals/*
 media/thumbnails/*
