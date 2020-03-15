@@ -76,7 +76,7 @@ const router = new Router({
           name: "chosen",
           component: Chosen,
           meta: {
-            title: "Поддержите нас!"
+            title: "Нашли дом!"
           }
         },
         {
@@ -84,7 +84,7 @@ const router = new Router({
           name: "feedback",
           component: Feedback,
           meta: {
-            title: "Поддержите нас!"
+            title: "Есть вопрос? Спросите нас!"
           }
         },
         {
