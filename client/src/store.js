@@ -128,18 +128,7 @@ export default new Vuex.Store({
       return axios
         .get(`/api/animals/${payload.animal}`)
         .then(response => {
-          // eslint-disable-next-line
-          // console.log(response.data);
           context.commit("setAnimalData", response.data);
-          // let myArray = response.data;
-          // let parts = Math.floor(myArray.length / 2);
-          // const rm = myArray.length % parts;
-          // context.commit(
-          //   "setCategories",
-          //   rm
-          //     ? [myArray.slice(0, 3), ..._.chunk(myArray.slice(3), 2)]
-          //     : _.chunk(myArray, parts)
-          // );
         })
         .catch(error => {
           // eslint-disable-next-line

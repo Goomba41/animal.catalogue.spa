@@ -1,9 +1,9 @@
 <template>
   <b-row class="mb-5">
     <b-col class="text-justify">
-      <h1 class="mb-5 text-center">Вопросы? Предложения? Спросите нас!</h1>
+      <h1 class="mb-5 text-center">Вопросы? Предложения? Сообщите нам!</h1>
 
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+      <b-form @submit="onSubmit" @reset="onReset">
         <b-form-group
           description="Куда нам отправить ответ? Не волнуйтесь, мы никому не раскроем Вашу электронную почту."
         >
@@ -22,6 +22,32 @@
             <span v-if="!$v.form.email.email">
               Сожалеем, но возможно вы ввели почту неправильно, попробуйте ещё
               :(
+            </span>
+          </b-form-invalid-feedback>
+        </b-form-group>
+
+        <b-form-group
+          description="Если не сможем ответить на почту, как с Вами связаться?"
+        >
+          <VuePhoneNumberInput
+            autocomplete="off"
+            :onlyCountries="['RU']"
+            :disabledFetchingCountry="true"
+            color="#2b7a78"
+            valid-color="#28a745"
+            error-color="#dc3545"
+            :translations="translations"
+            @update="phoneValid = $event.isValid"
+            v-model="$v.form.phone.$model"
+          />
+          <b-form-invalid-feedback
+            :state="$v.form.phone.$dirty ? !$v.form.phone.$error : null"
+          >
+            <span v-if="!$v.form.phone.required">
+              Сожалеем, но это поле обязательно :(
+            </span>
+            <span v-if="$v.form.phone.$model && !$v.form.phone.isPhone">
+              Непонятный номер телефона... Возможно вы допустили ошибку?
             </span>
           </b-form-invalid-feedback>
         </b-form-group>
@@ -73,7 +99,9 @@
           </b-form-invalid-feedback>
         </b-form-group>
 
-        <b-form-group>
+        <b-form-group
+          description="Вы должны согласиться, что Ваши персональные данные обрабатываются нами, чтобы принять Ваше обращение."
+        >
           <b-form-checkbox
             v-model.trim="form.opd"
             @input="$v.form.opd.$touch()"
@@ -93,7 +121,14 @@
           </b-form-invalid-feedback>
         </b-form-group>
 
-        <b-button type="submit" block variant="custom-green-dark">
+        <b-button
+          type="submit"
+          block
+          variant="custom-green-dark"
+          :disabled="
+            $v.form.$invalid || !$v.form.$anyDirty || $v.form.$anyError
+          "
+        >
           Отправить
         </b-button>
       </b-form>
@@ -109,6 +144,8 @@ import {
   maxLength,
   alpha
 } from "vuelidate/lib/validators";
+import VuePhoneNumberInput from "vue-phone-number-input";
+import "vue-phone-number-input/dist/vue-phone-number-input.css";
 
 export default {
   name: "Feedback",
@@ -116,12 +153,19 @@ export default {
     return {
       form: {
         email: "",
+        phone: "",
         name: "",
         message: null,
         opd: false
       },
+      phoneValid: false,
       pending: false,
-      show: true
+      translations: {
+        countrySelectorLabel: "Код страны",
+        countrySelectorError: "Выберите страну",
+        phoneNumberLabel: "Номер телефона",
+        example: "Например :"
+      }
     };
   },
   validations: {
@@ -129,6 +173,12 @@ export default {
       email: {
         required,
         email
+      },
+      phone: {
+        required,
+        isPhone: function() {
+          return this.phoneValid;
+        }
       },
       name: {
         required,
@@ -145,7 +195,12 @@ export default {
       }
     }
   },
+  components: { VuePhoneNumberInput },
   methods: {
+    Payload(evt) {
+      console.log(evt);
+      this.form.phone = 2;
+    },
     onSubmit(evt) {
       evt.preventDefault();
       this.$v.$touch();
@@ -156,14 +211,10 @@ export default {
       this.$v.$reset();
       // Reset our form values
       this.form.email = "";
+      this.form.phone = "";
       this.form.name = "";
       this.form.food = null;
       this.form.checked = false;
-      // Trick to reset/clear native browser form validation state
-      this.show = false;
-      this.$nextTick(() => {
-        this.show = true;
-      });
     }
   }
 };
