@@ -1,11 +1,26 @@
 #! env/bin/python3.6
 # -*- coding: utf8 -*-
-import os, uuid
+import os, uuid, traceback
 
 from flask import current_app, Blueprint, Response, json, request
 from app.models import Categories, Animals, DescriptionItem, ContactItem
 
 API0 = Blueprint('API0', __name__)
+
+# Генерация ответа сервера при ошибке
+def server_error(http_status=500, dbg=None, message="Something wrong!"):
+    if dbg is not None:
+        message += " (%i)\n\n%s"%(http_status, traceback.format_exc())
+    else:
+        message += " (%i)"%(http_status)
+
+    response = Response(
+        response=json.dumps({"code": http_status, "title": "Error!", "message": message}),
+        status=http_status,
+        mimetype='application/json'
+    )
+
+    return response
 
 # Получить все категории
 @API0.route('/categories/', methods=['GET'])
@@ -230,5 +245,25 @@ def get_category_animals(route):
         status=200,
         mimetype='application/json'
     )
+
+    return response
+
+# Регистрация сообщений из обратной связи и рассылка по адресам
+@API0.route('feedback', methods=['POST'])
+def post_feedback():
+
+    # Отработка ошибок:
+    try:
+        print("Got feedback!")
+    except ValueError:
+        response = server_error(http_status=400, dbg=request.args.get("dbg"), message="Something wrong with feedback sending!")
+    except Exception:
+        response = server_error(dbg=request.args.get("dbg"), message="Something wrong with feedback sending!")
+    else:
+        response = Response(
+            response=json.dumps({"code" : 200, "title": "Success!", "message": "Feedback successfully sended!"}),
+            status=200,
+            mimetype='application/json'
+        )
 
     return response

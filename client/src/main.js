@@ -13,6 +13,7 @@ import BackToTop from "vue-backtotop";
 import LoadScript from "vue-plugin-load-script";
 import VueCookie from "vue-cookie";
 import Vuelidate from "vuelidate";
+import TreeView from "vue-json-tree-view";
 
 import "../node_modules/nprogress/nprogress.css";
 
@@ -57,6 +58,7 @@ Vue.use(BackToTop);
 Vue.use(LoadScript);
 Vue.use(VueCookie);
 Vue.use(Vuelidate);
+Vue.use(TreeView);
 Vue.use(InfiniteLoading, {
   props: {
     distance: 1

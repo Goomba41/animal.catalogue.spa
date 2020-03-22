@@ -32,6 +32,12 @@ class Animals(db.Document):
     adjective = db.StringField(required=True, max_length=50, min_length=1)
     images = db.ListField()
 
+class Feedback(db.Document):
+    email = db.EmailField(required=True)
+    phone = db.StringField(required=True)
+    name = db.StringField(required=True, max_length=50)
+    message = db.StringField(required=True, max_length=500, min_length=20)
+    opd = db.BooleanField(required=False)
 # description: {
 #   age: {
 #     title: "Возраст",
