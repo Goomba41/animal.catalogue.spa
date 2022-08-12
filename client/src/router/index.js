@@ -1,5 +1,5 @@
 import Vue from "vue";
-import Router from "vue-router";
+import VueRouter from "vue-router";
 import NProgress from "nprogress";
 
 import Home from "./views/Home.vue";
@@ -13,16 +13,9 @@ import Support from "./views/Support.vue";
 import Chosen from "./views/Chosen.vue";
 import Feedback from "./views/Feedback.vue";
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-const router = new Router({
-  mode: "history",
-  linkActiveClass: "active",
-  base: process.env.BASE_URL,
-  scrollBehavior(to, from, savedPosition) {
-    return { x: 0, y: 0 };
-  },
-  routes: [
+const routes = [
     {
       path: "/",
       name: "home",
@@ -107,7 +100,16 @@ const router = new Router({
         }
       ]
     }
-  ]
+  ];
+
+const router = new VueRouter({
+mode: "history",
+  linkActiveClass: "active",
+  base: process.env.BASE_URL,
+  scrollBehavior(to, from, savedPosition) {
+    return { x: 0, y: 0 };
+  },
+  routes,
 });
 
 router.beforeEach((to, from, next) => {
