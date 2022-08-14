@@ -6,13 +6,14 @@ import store from "./store";
 import BootstrapVue from "bootstrap-vue";
 import InfiniteLoading from "vue-infinite-loading";
 import VueLodash from "vue-lodash";
-import { chunk } from "lodash";
+import { chunk, map } from "lodash";
 import VueLazyload from "vue-lazyload";
 import BackToTop from "vue-backtotop";
 import LoadScript from "vue-plugin-load-script";
 import VueCookie from "vue-cookie";
 import Vuelidate from "vuelidate";
 import TreeView from "vue-json-tree-view";
+import Meta from "vue-meta";
 
 import "../node_modules/nprogress/nprogress.css";
 
@@ -27,7 +28,7 @@ import {
   faArrowCircleRight,
   faArrowUp,
   faTimesCircle,
-  faThList
+  faThList,
 } from "@fortawesome/free-solid-svg-icons";
 import { faVk, faInstagram, faDev } from "@fortawesome/free-brands-svg-icons";
 
@@ -48,9 +49,9 @@ library.add(
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.use(BootstrapVue);
-Vue.use(VueLodash, { lodash: { chunk } });
+Vue.use(VueLodash, { lodash: { chunk, map } });
 Vue.use(VueLazyload, {
-  loading: require(`@/assets/img/grid.svg`)
+  loading: require(`@/assets/img/grid.svg`),
 });
 Vue.use(Meta);
 Vue.use(BackToTop);
@@ -60,11 +61,11 @@ Vue.use(Vuelidate);
 Vue.use(TreeView);
 Vue.use(InfiniteLoading, {
   props: {
-    distance: 1
+    distance: 1,
   },
   system: {
-    throttleLimit: 1000
-  }
+    throttleLimit: 1000,
+  },
 });
 
 Vue.config.productionTip = false;

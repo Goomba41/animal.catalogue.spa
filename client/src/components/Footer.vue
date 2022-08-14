@@ -50,17 +50,17 @@ export default {
   name: "Footer",
   data() {
     return {
-      startYear: 2019
+      startYear: 2019,
     };
   },
   computed: {
-    currentYear: function() {
+    currentYear: function () {
       const currentYear = new Date().getFullYear();
       if (currentYear !== this.startYear) {
         return ` - ${currentYear}`;
       }
       return null;
-    }
-  }
+    },
+  },
 };
 </script>

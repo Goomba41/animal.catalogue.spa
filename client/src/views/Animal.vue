@@ -65,7 +65,7 @@
       <span
         v-if="
           animalCurrent.address &&
-            Object.keys(animalCurrent.address).length !== 0
+          Object.keys(animalCurrent.address).length !== 0
         "
         class="ymaps-geolink line-height-normal"
         :data-description="animalCurrent.address.description"
@@ -73,9 +73,7 @@
       >
         {{ animalCurrent.address.value }}
       </span>
-      <template v-else>
-        Узнать адрес можно связавшись с куратором.
-      </template>
+      <template v-else> Узнать адрес можно связавшись с куратором. </template>
     </b-row>
     <b-row class="text-justify p-0 pb-3 pt-3" v-if="animalCurrent.contact">
       <ContactButton
@@ -104,7 +102,7 @@
           <router-link
             :to="{
               name: 'animal',
-              params: { animal: animalPrevious[0].route }
+              params: { animal: animalPrevious[0].route },
             }"
           >
             <font-awesome-icon
@@ -125,7 +123,7 @@
           <router-link
             :to="{
               name: 'animal',
-              params: { animal: animalNext[0].route }
+              params: { animal: animalNext[0].route },
             }"
           >
             <font-awesome-icon
@@ -152,48 +150,49 @@ export default {
       openImageIndex: null,
       galleryOptions: {
         closeOnSlideClick: true,
-        slideContentClass: "slide-content pt-5 pb-5"
-      }
+        slideContentClass: "slide-content pt-5 pb-5",
+      },
     };
   },
   components: { VueGallery, ContactButton },
   computed: mapState({
-    animalPrevious: state => state.animalData.previous,
-    animalCurrent: state => state.animalData.current,
-    animalNext: state => state.animalData.next,
-    imageList: function() {
-      return _.map(this.animalCurrent.images, function(item) {
-        return `http://192.168.0.105/media/animals/${item}.jpg`;
+    animalPrevious: (state) => state.animalData.previous,
+    animalCurrent: (state) => state.animalData.current,
+    animalNext: (state) => state.animalData.next,
+    imageList: function () {
+      return this.lodash.map(this.animalCurrent.images, function (item) {
+        return `http://192.168.0.100/media/animals/${item}.jpg`;
       });
-    }
+    },
   }),
   methods: {
-    dictOrdered: function(obj) {
-      return _.chain(obj)
-        .map(function(val, key) {
+    dictOrdered: function (obj) {
+      return this.lodash
+        .chain(obj)
+        .map(function (val, key) {
           return { character: key, details: val };
         })
-        .sortBy(function(o) {
+        .sortBy(function (o) {
           return o.details.position;
         })
         .value();
-    }
+    },
   },
   watch: {
     $route() {
       this.$store
         .dispatch("getAnimalData", {
-          animal: this.$route.params.animal
+          animal: this.$route.params.animal,
         })
         .then(() => {
           document.title = this.animalCurrent.title;
         });
-    }
+    },
   },
   beforeMount() {
     this.$store
       .dispatch("getAnimalData", {
-        animal: this.$route.params.animal
+        animal: this.$route.params.animal,
       })
       .then(() => {
         document.title = this.animalCurrent.title;
@@ -203,6 +202,6 @@ export default {
     )
       .then(() => {})
       .catch(() => {});
-  }
+  },
 };
 </script>

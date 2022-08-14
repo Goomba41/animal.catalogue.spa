@@ -12,8 +12,9 @@ flask-mongoengine = "*"
 gunicorn = "*"
 itsdangerous = "*"
 nodeenv = "*"
+setuptools = "*"
+packaging = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"

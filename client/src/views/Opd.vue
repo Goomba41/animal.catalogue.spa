@@ -114,6 +114,6 @@
 
 <script>
 export default {
-  name: "Opd"
+  name: "Opd",
 };
 </script>

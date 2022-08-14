@@ -11,21 +11,21 @@ export default {
   name: "animals",
   components: { Content },
   computed: mapState({
-    animals: state => state.animalsCategory
+    animals: (state) => state.animalsCategory,
   }),
   watch: {
     $route() {
       this.$store
         .dispatch("getAnimalsCategory", {
-          category: this.$route.params.category
+          category: this.$route.params.category,
         })
         .then(this.$refs.content.resetInfiniteLoading());
-    }
+    },
   },
   beforeMount() {
     this.$store.dispatch("getAnimalsCategory", {
-      category: this.$route.params.category
+      category: this.$route.params.category,
     });
-  }
+  },
 };
 </script>

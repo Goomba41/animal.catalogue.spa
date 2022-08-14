@@ -30,14 +30,14 @@ export default {
   props: {
     name: String,
     phone: String,
-    hideTime: Number
+    hideTime: Number,
   },
   data() {
     return {
       showState: false,
       timer: null,
       time: 0,
-      isRunning: false
+      isRunning: false,
     };
   },
   methods: {
@@ -60,17 +60,17 @@ export default {
       clearInterval(this.timer);
       this.timer = null;
       this.time = 0;
-    }
+    },
   },
   watch: {
     $route() {
       this.resetTimer();
       this.showState = false;
-    }
+    },
   },
   beforeMount() {
     this.resetTimer();
     this.showState = false;
-  }
+  },
 };
 </script>

@@ -10,7 +10,12 @@
       no-body
       v-bind:key="item._id.$oid"
       class="grid-cell overlay animated fadeInDownBig"
-      style="max-width: 555px; min-width: 555px;max-height: 555px; min-height: 555px;"
+      style="
+        max-width: 555px;
+        min-width: 555px;
+        max-height: 555px;
+        min-height: 555px;
+      "
       text-variant="white"
     >
       <b-carousel
@@ -19,7 +24,7 @@
         background="#ababab"
         img-width="450"
         img-height="450"
-        style="text-shadow: 1px 1px 2px #333;"
+        style="text-shadow: 1px 1px 2px #333"
       >
         <template v-if="item.images.length">
           <b-carousel-slide
@@ -65,26 +70,27 @@ export default {
   name: "CardLarge",
   data() {
     return {
-      offset: 0
+      offset: 0,
     };
   },
   props: {
-    item: Object
+    item: Object,
   },
   methods: {
     randomInterval() {
       return Math.floor(Math.random() * (10000 - 5000 + 1000) + 5000);
     },
-    dictOrdered: function(obj) {
-      return _.chain(obj)
-        .map(function(val, key) {
+    dictOrdered: function (obj) {
+      return this.lodash
+        .chain(obj)
+        .map(function (val, key) {
           return { character: key, details: val };
         })
-        .sortBy(function(o) {
+        .sortBy(function (o) {
           return o.details.position;
         })
         .value();
-    }
-  }
+    },
+  },
 };
 </script>

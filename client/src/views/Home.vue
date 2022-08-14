@@ -31,14 +31,14 @@ export default {
     Logo,
     Footer,
     Content,
-    CookieWarning
+    CookieWarning,
   },
   computed: mapState({
-    categories: state => state.categories
+    categories: (state) => state.categories,
   }),
   beforeMount() {
     this.$store.dispatch("getCategories");
-  }
+  },
 };
 </script>
 

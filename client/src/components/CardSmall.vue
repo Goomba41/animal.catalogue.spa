@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="grid-cell" style="max-width: 555px; min-width: 555px;">
+  <b-card no-body class="grid-cell" style="max-width: 555px; min-width: 555px">
     <b-link
       :to="
         this.$route.params.category
@@ -18,7 +18,7 @@
             background="#ababab"
             img-width="450"
             img-height="450"
-            style="text-shadow: 1px 1px 2px #333;"
+            style="text-shadow: 1px 1px 2px #333"
           >
             <template v-if="item.images.length">
               <b-carousel-slide
@@ -65,27 +65,28 @@ export default {
   name: "CardSmall",
   data() {
     return {
-      offset: 0
+      offset: 0,
     };
   },
   props: {
     item: Object,
-    rowIndex: Number
+    rowIndex: Number,
   },
   methods: {
     randomInterval() {
       return Math.floor(Math.random() * (10000 - 5000 + 1000) + 5000);
     },
-    dictOrdered: function(obj) {
-      return _.chain(obj)
-        .map(function(val, key) {
+    dictOrdered: function (obj) {
+      return this.lodash
+        .chain(obj)
+        .map(function (val, key) {
           return { character: key, details: val };
         })
-        .sortBy(function(o) {
+        .sortBy(function (o) {
           return o.details.position;
         })
         .value();
-    }
-  }
+    },
+  },
 };
 </script>

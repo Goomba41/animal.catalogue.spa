@@ -79,12 +79,12 @@ export default {
   data() {
     return {
       offset: 0,
-      infiniteId: +new Date()
+      infiniteId: +new Date(),
     };
   },
   components: { CardLarge, CardSmall },
   props: {
-    data: Array
+    data: Array,
   },
   methods: {
     infiniteHandler($state) {
@@ -94,7 +94,7 @@ export default {
           this.$store
             .dispatch("getNewAnimalsCategory", {
               category: this.$route.params.category,
-              offset: this.offset
+              offset: this.offset,
             })
             .then(() => {
               $state.loaded();
@@ -108,7 +108,7 @@ export default {
     resetInfiniteLoading() {
       this.infiniteId += 1;
       this.offset = 0;
-    }
-  }
+    },
+  },
 };
 </script>

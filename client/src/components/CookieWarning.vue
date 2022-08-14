@@ -1,8 +1,15 @@
 <template>
   <b-alert
     v-model="showAlert"
-    class="position-fixed fixed-bottom m-0 rounded-0 border-custom-green-dark-top cookie-alert"
-    style="z-index: 2000;"
+    class="
+      position-fixed
+      fixed-bottom
+      m-0
+      rounded-0
+      border-custom-green-dark-top
+      cookie-alert
+    "
+    style="z-index: 2000"
     variant="custom-white"
     dismissible
     fade
@@ -36,19 +43,19 @@ export default {
   name: "CookieWarning",
   data() {
     return {
-      showAlert: false
+      showAlert: false,
     };
   },
   methods: {
-    CookieDismissed: function() {
+    CookieDismissed: function () {
       this.$cookie.set("CookieAccepted", "1", { expires: "1M" });
-    }
+    },
   },
   mounted() {
     const cookie = this.$cookie.get("CookieAccepted");
     if (!cookie) {
       this.showAlert = true;
     }
-  }
+  },
 };
 </script>

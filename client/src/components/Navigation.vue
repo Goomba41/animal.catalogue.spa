@@ -60,10 +60,10 @@ import { mapState } from "vuex";
 export default {
   name: "Navigation",
   computed: mapState({
-    categories: state => state.navigation
+    categories: (state) => state.navigation,
   }),
   beforeMount() {
     this.$store.dispatch("getNavigation");
-  }
+  },
 };
 </script>

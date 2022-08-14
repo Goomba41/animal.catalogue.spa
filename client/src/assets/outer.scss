@@ -55,28 +55,70 @@ $font-family-base: "Roboto Condensed";
   font-weight: 900;
   color: theme-color("custom-gray");
 
-  @include media-breakpoint-only(xs) { font-size: 2rem; }
-  @include media-breakpoint-only(sm) { font-size: 4rem; }
-  @include media-breakpoint-only(md) { font-size: 6rem; }
-  @include media-breakpoint-only(lg) { font-size: 6rem; }
-  @include media-breakpoint-only(xl) { font-size: 6rem; }
+  @include media-breakpoint-only(xs) {
+    font-size: 2rem;
+  }
+
+  @include media-breakpoint-only(sm) {
+    font-size: 4rem;
+  }
+
+  @include media-breakpoint-only(md) {
+    font-size: 6rem;
+  }
+
+  @include media-breakpoint-only(lg) {
+    font-size: 6rem;
+  }
+
+  @include media-breakpoint-only(xl) {
+    font-size: 6rem;
+  }
 }
 
-#services, #contacts { font-size: .7rem; }
-#services .nav .nav-item, #contacts .nav .nav-item {
+#services,
+#contacts {
+  font-size: .7rem;
+}
+
+#services .nav .nav-item,
+#contacts .nav .nav-item {
   border-right: 1px solid;
-  a { padding: 0 .4rem; }
-  &:last-child { border-right: 0; }
+
+  a {
+    padding: 0 .4rem;
+  }
+
+  &:last-child {
+    border-right: 0;
+  }
 }
 
-#socials { button { padding: .25rem; } }
+#socials {
+  button {
+    padding: .25rem;
+  }
+}
 
-.nav-link { font-weight: 100; }
+.nav-link {
+  font-weight: 100;
+}
 
-.card-title { font-size: 1.5rem; text-transform: uppercase; margin:0; font-weight: 400}
-.card-subtitle { font-size: .8rem; margin:0; }
+.card-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 400
+}
+
+.card-subtitle {
+  font-size: .8rem;
+  margin: 0;
+}
+
 .card-body {
   padding: 2rem;
+
   hr {
     border-style: none none solid none;
     border-width: 5px 0;
@@ -91,26 +133,32 @@ $font-family-base: "Roboto Condensed";
   opacity: .5;
   transition: all 0.5s ease-in-out;
 }
+
 #content:hover .overlay:hover {
   .carousel {
     opacity: 0;
     transition: all 0.5s ease-in-out;
   }
+
   .card-body {
     opacity: .75;
     background-color: map-get($theme-colors, "custom-green-dark");
     transition: all 0.5s ease-in-out;
   }
 }
-.overlay .card-body{
+
+.overlay .card-body {
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
-#content, .grid-cell, #content .overlay .carousel {
+
+#content,
+.grid-cell,
+#content .overlay .carousel {
   transition: all 0.5s ease-in-out;
 }
 
-.left > div > .carousel:before {
+.left>div>.carousel:before {
   border-left-color: map-get($theme-colors, "custom-green-dark") !important;
   left: 0%;
   top: 50%;
@@ -126,7 +174,8 @@ $font-family-base: "Roboto Condensed";
   margin-top: -18px;
   z-index: 2;
 }
-.right > div > .carousel:before {
+
+.right>div>.carousel:before {
   border-right-color: map-get($theme-colors, "custom-green-dark") !important;
   right: 0%;
   top: 50%;
@@ -144,10 +193,14 @@ $font-family-base: "Roboto Condensed";
 }
 
 
-@each $key, $value in $social-colors {
+@each $key,
+$value in $social-colors {
   .link-#{$key} {
     transition: all 0.5s ease-in-out;
-    &:hover { color: $value; }
+
+    &:hover {
+      color: $value;
+    }
   }
 }
 
@@ -159,7 +212,8 @@ ul.bullets-none {
   list-style-type: none;
 }
 
-ul.card-small-description, ul.card-big-description {
+ul.card-small-description,
+ul.card-big-description {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -169,23 +223,25 @@ ul.card-small-description, ul.card-big-description {
 ul.card-small-description {
   font-size: 0.7rem;
 }
+
 ul.card-big-description {
   font-size: 1rem;
 }
 
-.blueimp-gallery-controls > a > svg {
+.blueimp-gallery-controls>a>svg {
   pointer-events: none;
 }
 
-.blueimp-gallery>.next, .blueimp-gallery>.prev {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    margin-top: -23px;
-    font-size: 4rem;
-    opacity: .5;
-    cursor: pointer;
-    display: none;
+.blueimp-gallery>.next,
+.blueimp-gallery>.prev {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -23px;
+  font-size: 4rem;
+  opacity: .5;
+  cursor: pointer;
+  display: none;
 }
 
 .image {
@@ -215,7 +271,7 @@ button.contact-button,
 button.contact-button:focus,
 button.contact-button.focus,
 button.contact-button:not(:disabled):not(.disabled):active,
-button.contact-button:not(:disabled):not(.disabled).active,  {
+button.contact-button:not(:disabled):not(.disabled).active {
   background-color: map-get($theme-colors, "custom-white");
   border-color: map-get($theme-colors, "custom-white");
   font-weight: 900;
@@ -226,10 +282,10 @@ button.contact-button:hover,
 button.contact-button:focus:hover,
 button.contact-button.focus:hover,
 button.contact-button:not(:disabled):not(.disabled):active:hover,
-button.contact-button:not(:disabled):not(.disabled).active:hover, {
-    color: map-get($theme-colors, "custom-green");
-    background-color: darken(map-get($theme-colors, "custom-gray"), 10%);
-    border-color: darken(map-get($theme-colors, "custom-gray"), 20%);
+button.contact-button:not(:disabled):not(.disabled).active:hover {
+  color: map-get($theme-colors, "custom-green");
+  background-color: darken(map-get($theme-colors, "custom-gray"), 10%);
+  border-color: darken(map-get($theme-colors, "custom-gray"), 20%);
 }
 
 
@@ -242,7 +298,8 @@ span.ymaps-geolink:after {
   content: none;
 }
 
-a.attention, span.ymaps-geolink {
+a.attention,
+span.ymaps-geolink {
   border-bottom: 1px dotted;
   text-decoration: none;
   background-color: transparent;
@@ -253,7 +310,8 @@ span.ymaps-geolink {
   color: inherit;
 }
 
-a.attention:hover, span.ymaps-geolink:hover {
+a.attention:hover,
+span.ymaps-geolink:hover {
   border-bottom-color: transparent;
 }
 
@@ -263,18 +321,22 @@ a.attention:hover, span.ymaps-geolink:hover {
 
 $border-width-custom: 0.5rem;
 
-@each $color, $value in $theme-colors {
+@each $color,
+$value in $theme-colors {
   .border-#{$color}-top {
-    border-top: $border-width-custom solid $value !important;
+    border-top: $border-width-custom solid $value  !important;
   }
+
   .border-#{$color}-right {
-    border-right: $border-width-custom solid $value !important;
+    border-right: $border-width-custom solid $value  !important;
   }
+
   .border-#{$color}-bottom {
-    border-bottom: $border-width-custom solid $value !important;
+    border-bottom: $border-width-custom solid $value  !important;
   }
+
   .border-#{$color}-left {
-    border-left: $border-width-custom solid $value !important;
+    border-left: $border-width-custom solid $value  !important;
   }
 }
 

@@ -163,7 +163,6 @@ import {
   minLength,
   email,
   maxLength,
-  alpha
 } from "vuelidate/lib/validators";
 import VuePhoneNumberInput from "vue-phone-number-input";
 import axios from "axios";
@@ -178,7 +177,7 @@ export default {
         phone: "",
         name: "",
         message: null,
-        opd: null
+        opd: null,
       },
       phoneValid: false,
       pending: false,
@@ -186,36 +185,36 @@ export default {
         countrySelectorLabel: "Код страны",
         countrySelectorError: "Выберите страну",
         phoneNumberLabel: "Номер телефона",
-        example: "Например :"
-      }
+        example: "Например :",
+      },
     };
   },
   validations: {
     form: {
       email: {
         required,
-        email
+        email,
       },
       phone: {
         required,
-        isPhone: function() {
+        isPhone: function () {
           return this.phoneValid;
-        }
+        },
       },
       name: {
         required,
-        alpha: val => /^[а-яё ]*$/i.test(val),
-        maxLength: maxLength(50)
+        alpha: (val) => /^[а-яё ]*$/i.test(val),
+        maxLength: maxLength(50),
       },
       message: {
         required,
         minLength: minLength(20),
-        maxLength: maxLength(500)
+        maxLength: maxLength(500),
       },
       opd: {
-        checked: value => value === true
-      }
-    }
+        checked: (value) => value === true,
+      },
+    },
   },
   components: { VuePhoneNumberInput },
   methods: {
@@ -227,7 +226,7 @@ export default {
         this.pending = true;
         await axios
           .post(`/api/feedback`)
-          .then(response => {
+          .then((response) => {
             this.onReset();
             this.toastShow(
               response.data.title,
@@ -236,7 +235,7 @@ export default {
             );
             this.pending = false;
           })
-          .catch(error => {
+          .catch((error) => {
             this.toastShow(
               error.response.data.title,
               error.response.data.message,
@@ -271,9 +270,9 @@ export default {
       this.$bvToast.toast([vNodesMsg], {
         title: [vNodesTitle],
         solid: true,
-        variant: type
+        variant: type,
       });
-    }
-  }
+    },
+  },
 };
 </script>
