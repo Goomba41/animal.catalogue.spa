@@ -25,16 +25,24 @@ def server_error(http_status=500, dbg=None, message="Something wrong!"):
 # Получить все категории
 @API0.route('/categories/', methods=['GET'])
 def get_categories():
-    # user = Categories.query.get(1)
 
-    # category = Categories()
-    # category.title = 'Собачули'
-    # category.description = 'Выбрать собаку!'
-    # category.save()
+    # categoryMale = Categories()
+    # categoryMale.title = 'Пёсели'
+    # categoryMale.description = 'Выбрать собаку!'
+    # categoryMale.route = 'males'
+    # categoryMale.save()
+    
+    # categoryFemale = Categories()
+    # categoryFemale.title = 'Собачули'
+    # categoryFemale.description = 'Выбрать собаку!'
+    # categoryFemale.route = 'females'
+    # categoryFemale.save()
 
-    # animals = Animals.objects(route="boss")
-    # for animal in animals:
-    #     animal.delete()
+    # categoryPups = Categories()
+    # categoryPups.title = 'Малыши'
+    # categoryPups.description = 'Выбрать щеночка!'
+    # categoryPups.route = 'pups'
+    # categoryPups.save()
 
     # category = Categories.objects.get(route="males")
     # age = DescriptionItem(title="Возраст", value="5 лет")
@@ -49,17 +57,8 @@ def get_categories():
     # animal.save()
     # animal = Animals(title="Зевс", route="zeus", categories=category, description={"age": age} )
     # animal.save()
-    # animal = Animals.objects.get(id="5d88fec2ebd26e5d6af665c4")
-    # animal.title = "Бруно"
-    # animal.route = "bruno"
+    # animal = Animals(title="Бруно", route="bruno", categories=category, description={"age": age} )
     # animal.save()
-
-    # Categories.objects(route="males").update(unset__animals="5d84ffe048a5c3a5141728c5")
-    # category = Categories.objects.get(route="males")
-    # category.animals = [brut]
-    # category.save()
-    # category.route = 'pups'
-    # category.save()
 
     response = Response(
         response=json.dumps(Categories.objects),
