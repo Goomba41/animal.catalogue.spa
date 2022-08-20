@@ -1,28 +1,31 @@
 #! env/bin/python3.6
 # -*- coding: utf8 -*-
-import os, uuid, traceback
+import os
+import uuid
+import traceback
 
 from flask import current_app, Blueprint, Response, json, request
 from app.models import Categories, Animals, DescriptionItem, ContactItem
 
 API0 = Blueprint('API0', __name__)
 
-# Генерация ответа сервера при ошибке
+
 def server_error(http_status=500, dbg=None, message="Something wrong!"):
     if dbg is not None:
-        message += " (%i)\n\n%s"%(http_status, traceback.format_exc())
+        message += " (%i)\n\n%s" % (http_status, traceback.format_exc())
     else:
-        message += " (%i)"%(http_status)
+        message += " (%i)" % (http_status)
 
     response = Response(
-        response=json.dumps({"code": http_status, "title": "Error!", "message": message}),
+        response=json.dumps(
+            {"code": http_status, "title": "Error!", "message": message}),
         status=http_status,
         mimetype='application/json'
     )
 
     return response
 
-# Получить все категории
+
 @API0.route('/categories/', methods=['GET'])
 def get_categories():
 
@@ -31,7 +34,7 @@ def get_categories():
     # categoryMale.description = 'Выбрать собаку!'
     # categoryMale.route = 'males'
     # categoryMale.save()
-    
+
     # categoryFemale = Categories()
     # categoryFemale.title = 'Собачули'
     # categoryFemale.description = 'Выбрать собаку!'
@@ -68,9 +71,9 @@ def get_categories():
 
     return response
 
-# Получить одну категорию по маршруту
-@API0.route('/categories/<string:route>', methods=['GET'])
-def get_one_categories(route):
+
+@API0.route('/categories/<string:categoryName>', methods=['GET'])
+def get_one_categories(categoryName):
 
     # category = Categories.objects.get(route=route)
     # photo = 'dc50b71f-84a4-4e51-807c-9f5a7702f1e2'
@@ -78,17 +81,16 @@ def get_one_categories(route):
     # category.save()
 
     response = Response(
-        response=json.dumps(Categories.objects.get(route=route)),
+        response=json.dumps(Categories.objects.get(route=categoryName)),
         status=200,
         mimetype='application/json'
     )
 
     return response
 
-# Получить всех животных
+
 @API0.route('/animals', methods=['GET'])
 def get_animals():
-
     # category = Categories.objects.get(route="females")
     # animal = Animals.objects.get(route="rosa")
     # animal.categories = category
@@ -102,7 +104,7 @@ def get_animals():
 
     return response
 
-# Получить животного по маршруту
+
 @API0.route('/animals/<string:route>', methods=['GET'])
 def get_one_animal(route):
 
@@ -189,24 +191,29 @@ def get_one_animal(route):
         np_amount = int(request.args.get('npa', 1))
     except ValueError:
         return Response(
-            response=json.dumps({"code" : 400, "message": "One of the parameters is of the wrong type"}),
+            response=json.dumps(
+                {"code": 400, "message": "One of the parameters is of the wrong type"}),
             status=400,
             mimetype='application/json'
         )
     else:
         if (np_amount < 0):
             return Response(
-                response=json.dumps({"code" : 400, "message": "One of the parameters has an incorrect value"}),
+                response=json.dumps(
+                    {"code": 400, "message": "One of the parameters has an incorrect value"}),
                 status=400,
                 mimetype='application/json'
             )
 
     animal = Animals.objects.get(route=route)
-    prev = Animals.objects(id__gt=animal.id, categories=animal.categories).only('route').order_by('+id')[:np_amount]
-    next = Animals.objects(id__lt=animal.id, categories=animal.categories).only('route').order_by('-id')[:np_amount]
+    prev = Animals.objects(id__gt=animal.id, categories=animal.categories).only(
+        'route').order_by('+id')[:np_amount]
+    next = Animals.objects(id__lt=animal.id, categories=animal.categories).only(
+        'route').order_by('-id')[:np_amount]
 
     response = Response(
-        response=json.dumps({'current': animal, 'previous': prev, 'next': next}),
+        response=json.dumps(
+            {'current': animal, 'previous': prev, 'next': next}),
         status=200,
         mimetype='application/json'
     )
@@ -214,6 +221,8 @@ def get_one_animal(route):
     return response
 
 # Получить животных по категории
+
+
 @API0.route('categories/<string:route>/animals', methods=['GET'])
 def get_category_animals(route):
 
@@ -223,21 +232,24 @@ def get_category_animals(route):
         offset = int(request.args.get('offset', 0))
     except ValueError:
         return Response(
-            response=json.dumps({"code" : 400, "message": "One of the parameters is of the wrong type"}),
+            response=json.dumps(
+                {"code": 400, "message": "One of the parameters is of the wrong type"}),
             status=400,
             mimetype='application/json'
         )
     else:
         if ((limit < 0) or (offset < 0)):
             return Response(
-                response=json.dumps({"code" : 400, "message": "One of the parameters has an incorrect value"}),
+                response=json.dumps(
+                    {"code": 400, "message": "One of the parameters has an incorrect value"}),
                 status=400,
                 mimetype='application/json'
             )
     # ------------------
 
     category = Categories.objects.get(route=route)
-    animals = Animals.objects(categories=category).order_by('-id').skip(offset).limit(limit)
+    animals = Animals.objects(categories=category).order_by(
+        '-id').skip(offset).limit(limit)
 
     response = Response(
         response=json.dumps(animals),
@@ -248,6 +260,8 @@ def get_category_animals(route):
     return response
 
 # Регистрация сообщений из обратной связи и рассылка по адресам
+
+
 @API0.route('feedback', methods=['POST'])
 def post_feedback():
 
@@ -255,12 +269,15 @@ def post_feedback():
     try:
         print("Got feedback!")
     except ValueError:
-        response = server_error(http_status=400, dbg=request.args.get("dbg"), message="Something wrong with feedback sending!")
+        response = server_error(http_status=400, dbg=request.args.get(
+            "dbg"), message="Something wrong with feedback sending!")
     except Exception:
-        response = server_error(dbg=request.args.get("dbg"), message="Something wrong with feedback sending!")
+        response = server_error(dbg=request.args.get(
+            "dbg"), message="Something wrong with feedback sending!")
     else:
         response = Response(
-            response=json.dumps({"code" : 200, "title": "Success!", "message": "Feedback successfully sended!"}),
+            response=json.dumps(
+                {"code": 200, "title": "Success!", "message": "Feedback successfully sended!"}),
             status=200,
             mimetype='application/json'
         )
