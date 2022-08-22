@@ -1,13 +1,20 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
 import { useCategoriesStore } from "@/stores/categories";
+import { useLoadingStore } from "@/stores/loading";
 
-const store = useCategoriesStore();
-store.fetchCategories();
+const categoriesStore = useCategoriesStore();
+const loadingStore = useLoadingStore();
+
+categoriesStore.fetchCategories();
 </script>
 
 <template>
+  <span
+    v-if="loadingStore.loadingState"
+    class="skeleton-box rounded-full bg-primary-light-hover h-10"
+  ></span>
   <nav
+    v-else
     class="nav flex flex-row md:flex-row flex-wrap pl-0 pb-5 justify-center"
     id="app_navigation"
     role="navigation"
@@ -15,12 +22,12 @@ store.fetchCategories();
   >
     <div
       class="nav-item text-center mr-2"
-      v-for="(category, index) in (store.categories as any)"
+      v-for="(category, index) in (categoriesStore.categories as any)"
       v-bind:key="index"
       role="presentation"
     >
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded px-6 py-3 my-2 focus:outline-none focus:ring-0"
+        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
         :id="`${category.route}-category`"
         :to="{ name: 'animals', params: { category: category.route } }"
@@ -30,7 +37,7 @@ store.fetchCategories();
     </div>
     <div class="nav-item text-center mr-2" role="presentation">
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded px-6 py-3 my-2 focus:outline-none focus:ring-0"
+        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
         id="{{`adopted-page`}}"
         :to="{ name: 'adopted' }"
@@ -41,7 +48,7 @@ store.fetchCategories();
 
     <div class="nav-item text-center mr-2" role="presentation">
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded px-6 py-3 my-2 focus:outline-none focus:ring-0"
+        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
         id="{{`support-page`}}"
         :to="{ name: 'support' }"
@@ -54,10 +61,8 @@ store.fetchCategories();
       class="relative inline-block text-center dropdown mr-2 last:mr-0"
       role="presentation"
     >
-      <!-- class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-white border border-gray-300 rounded-md hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50 active:text-gray-800" -->
-
       <button
-        class="nav-link inline-flex content-center hover:bg-primary-dark-hover transition-colors font-medium text-xs leading-tight rounded px-6 py-3 my-2 focus:outline-none focus:ring-0 [&.active]:bg-primary-dark focus:bg-primary-dark"
+        class="nav-link inline-flex content-center hover:bg-primary-dark-hover transition-colors font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0 [&.active]:bg-primary-dark focus:bg-primary-dark"
         type="button"
         aria-haspopup="true"
       >
@@ -145,8 +150,6 @@ store.fetchCategories();
       </div>
     </div>
   </nav>
-
-  <!-- <span class="skeleton-box rounded-full bg-gray-300 h-5"></span> -->
 </template>
 
 <style scoped>

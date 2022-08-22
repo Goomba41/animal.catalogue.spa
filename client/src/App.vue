@@ -1,8 +1,41 @@
 <script lang="ts" setup>
+import { inject } from "vue";
+import { useMeta } from "vue-meta";
 import { RouterView } from "vue-router";
-import { useActiveMeta, useMeta } from "vue-meta";
 
-const siteName: string = "Не все дома?";
+import CookieWarning from "@/components/CookieWarning.vue";
+
+import { useLoadingStore } from "@/stores/loading";
+
+import type { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
+
+const axios: any = inject("axios");
+const store = useLoadingStore();
+
+// Отслеживание начала загрузки (отправка запроса)
+axios.interceptors.request.use(
+  (config: AxiosRequestConfig) => {
+    store.loading(true, "axios");
+    return config;
+  },
+  (error: AxiosError) => {
+    store.loading(false, "axios");
+    return Promise.reject(error);
+  }
+);
+
+// Отслеживание окончания загрузки (ответа от сервера)
+axios.interceptors.response.use(
+  (response: AxiosResponse) => {
+    store.loading(false, "axios");
+    return response;
+  },
+  (error: AxiosError) => {
+    store.loading(false, "axios");
+    return Promise.reject(error);
+  }
+);
+
 useMeta({
   htmlAttrs: { lang: "ru", amp: true },
   meta: [
@@ -44,15 +77,13 @@ useMeta({
 </script>
 
 <template>
-  <metainfo>
-    <template v-slot:title="{ content }">
-      {{ content ? `${content} • ${siteName}` : siteName }}
-    </template>
-  </metainfo>
+  <metainfo> </metainfo>
 
   <div class="container mx-auto h-screen py-4">
     <RouterView />
   </div>
+
+  <CookieWarning />
 </template>
 
 <style scoped></style>

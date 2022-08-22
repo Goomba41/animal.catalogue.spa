@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         vk: "#4c75a3",
         instagram: "#e4405f",
+        telegram: "#0088cc",
       },
     },
   },

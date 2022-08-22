@@ -1,6 +1,8 @@
-import type { AxiosResponse } from "axios";
-import { defineStore } from "pinia";
+import type VueAxios from "vue-axios";
+
 import { inject } from "vue";
+import { defineStore } from "pinia";
+import type { AxiosResponse } from "axios";
 
 export const useCategoriesStore = defineStore({
   id: "categories",
@@ -10,7 +12,7 @@ export const useCategoriesStore = defineStore({
   getters: {},
   actions: {
     fetchCategories() {
-      const axios: any = inject("axios");
+      const axios: any = inject<typeof VueAxios>("axios");
       return axios
         .get("/api/categories/")
         .then((response: AxiosResponse) => {
