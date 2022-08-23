@@ -11,7 +11,7 @@ categoriesStore.fetchCategories();
 <template>
   <span
     v-if="loadingStore.loadingState"
-    class="skeleton-box rounded-full bg-primary-light-hover h-10"
+    class="skeleton-box rounded-full bg-primary-light-hover h-10 mb-5"
   ></span>
   <nav
     v-else

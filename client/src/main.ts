@@ -5,14 +5,18 @@ import { createMetaManager } from "vue-meta"; // Page metadata
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faCircleInfo, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleInfo,
+  faThumbsUp,
+  faArrowUp,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faVk,
   faInstagram,
   faTelegram,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faVk, faInstagram, faTelegram, faCircleInfo, faThumbsUp);
+library.add(faVk, faInstagram, faTelegram, faCircleInfo, faThumbsUp, faArrowUp);
 
 // HttpClient
 import axios from "axios";

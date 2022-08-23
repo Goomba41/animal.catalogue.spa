@@ -23,9 +23,9 @@ export const useLoadingStore = defineStore({
       if (isLoading) {
         this.loadersCounter++;
         this[type] = true;
-      } else if (this.loadersCounter > 0) {
+      } else {
         this.loadersCounter--;
-        this[type] = this.loadersCounter > 0;
+        this[type] = false;
       }
     },
   },

@@ -17,7 +17,6 @@ function CookieDismissed() {
 
 onMounted(() => {
   const cookie = $cookies.get("CookieAccepted");
-  console.log(cookie, typeof cookie, cookie !== "true");
   visible.value = cookie !== "true";
 });
 </script>
@@ -66,7 +65,7 @@ onMounted(() => {
         <font-awesome-icon
           :icon="['fas', 'thumbs-up']"
           fixed-width
-          class="w-5 h-5 mr-2 text-primary-ligth"
+          class="w-5 h-5 mr-2 text-primary-light"
         />
         Продолжить
       </button>

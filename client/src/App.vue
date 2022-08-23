@@ -3,7 +3,11 @@ import { inject } from "vue";
 import { useMeta } from "vue-meta";
 import { RouterView } from "vue-router";
 
+import Logo from "@/components/Logo.vue";
+import Footer from "@/components/Footer.vue";
+import Navigation from "@/components/Navigation.vue";
 import CookieWarning from "@/components/CookieWarning.vue";
+import BackToTop from "@/components/BackToTop.vue";
 
 import { useLoadingStore } from "@/stores/loading";
 
@@ -79,11 +83,17 @@ useMeta({
 <template>
   <metainfo> </metainfo>
 
-  <div class="container mx-auto h-screen py-4">
-    <RouterView />
+  <div class="container mx-auto flex flex-col min-h-screen py-4">
+    <Logo />
+    <Navigation />
+    <div class="flex-auto mb-5 min-h-full">
+      <RouterView />
+    </div>
+    <Footer />
   </div>
 
   <CookieWarning />
+  <BackToTop />
 </template>
 
 <style scoped></style>
