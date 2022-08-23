@@ -15,9 +15,9 @@
 </template>
 
 <script lang="ts" setup>
-import { Ref, ref } from "vue";
+import { ref } from "vue";
 
-let show: Ref<boolean> = ref(false);
+let show = ref(false);
 
 window.onscroll = function () {
   show.value =
