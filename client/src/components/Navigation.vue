@@ -27,7 +27,7 @@ categoriesStore.fetchCategories();
       role="presentation"
     >
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
+        class="nav-link text-white hover:text-white [&.active]:bg-primary-dark hover:bg-primary-dark-hover block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
         :id="`${category.route}-category`"
         :to="{ name: 'animals', params: { category: category.route } }"
@@ -37,9 +37,9 @@ categoriesStore.fetchCategories();
     </div>
     <div class="nav-item text-center mr-2" role="presentation">
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
+        class="nav-link text-white hover:text-white [&.active]:bg-primary-dark hover:bg-primary-dark-hover block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
-        id="{{`adopted-page`}}"
+        id="adopted-page"
         :to="{ name: 'adopted' }"
       >
         Все дома!
@@ -48,9 +48,9 @@ categoriesStore.fetchCategories();
 
     <div class="nav-item text-center mr-2" role="presentation">
       <router-link
-        class="nav-link [&.active]:bg-primary-dark hover:bg-primary-dark-hover transition-colors block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
+        class="nav-link text-white hover:text-white [&.active]:bg-primary-dark hover:bg-primary-dark-hover block font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0"
         role="link"
-        id="{{`support-page`}}"
+        id="support-page"
         :to="{ name: 'support' }"
       >
         Поддержать
@@ -62,7 +62,7 @@ categoriesStore.fetchCategories();
       role="presentation"
     >
       <button
-        class="nav-link inline-flex content-center hover:bg-primary-dark-hover transition-colors font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0 [&.active]:bg-primary-dark focus:bg-primary-dark"
+        class="nav-link text-white hover:text-white inline-flex content-center hover:bg-primary-dark-hover transition-colors font-medium text-xs leading-tight rounded-lg px-6 py-3 focus:outline-none focus:ring-0 [&.active]:bg-primary-dark focus:bg-primary-dark"
         type="button"
         aria-haspopup="true"
       >
@@ -85,17 +85,17 @@ categoriesStore.fetchCategories();
           role="menu"
         >
           <div class="px-4 py-3 bg-white rounded-tl-lg rounded-tr-lg">
-            <p
+            <div
               class="text-xs leading-5 text-gray-400 truncate cursor-default text-left"
             >
               Правовая информация
-            </p>
+            </div>
           </div>
           <div class="py-1">
             <router-link
               class="text-black flex justify-between w-full hover:text-white [&.active]:bg-primary [&.active]:text-white hover:bg-primary-light-hover transition-colors text-sm text-left leading-5 px-4 py-2 focus:outline-none focus:ring-0"
               role="link"
-              id="{{`cookie-page`}}"
+              id="cookie-page"
               :to="{ name: 'cookie' }"
             >
               Политика cookie
@@ -104,7 +104,7 @@ categoriesStore.fetchCategories();
             <router-link
               class="text-black flex w-full hover:text-white [&.active]:bg-primary [&.active]:text-white hover:bg-primary-light-hover transition-colors text-sm text-left leading-5 px-4 py-2 focus:outline-none focus:ring-0"
               role="link"
-              id="{{`opd-page`}}"
+              id="opd-page"
               :to="{ name: 'opd' }"
             >
               Политика&nbsp;<abbr title="Обработка персональных данных"
@@ -113,17 +113,17 @@ categoriesStore.fetchCategories();
             </router-link>
           </div>
           <div class="px-4 py-3 bg-white">
-            <p
+            <div
               class="text-xs leading-5 text-gray-400 truncate cursor-default text-left"
             >
               Прочая информация
-            </p>
+            </div>
           </div>
           <div class="py-1">
             <router-link
               class="text-black flex w-full hover:text-white [&.active]:bg-primary [&.active]:text-white hover:bg-primary-light-hover transition-colors text-sm text-left leading-5 px-4 py-2 focus:outline-none focus:ring-0"
               role="link"
-              id="{{`foundling-page`}}"
+              id="foundling-page"
               :to="{ name: 'foundling' }"
             >
               Нашли животное?
@@ -132,7 +132,7 @@ categoriesStore.fetchCategories();
             <router-link
               class="text-black flex w-full hover:text-white [&.active]:bg-primary [&.active]:text-white hover:bg-primary-light-hover transition-colors text-sm text-left leading-5 px-4 py-2 focus:outline-none focus:ring-0"
               role="link"
-              id="{{`publication-page`}}"
+              id="publication-page"
               :to="{ name: 'publication' }"
             >
               Размещение в каталоге

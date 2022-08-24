@@ -6,6 +6,15 @@ import { useLoadingStore } from "@/stores/loading";
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   linkActiveClass: "active",
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return { el: to.hash, behavior: "smooth", top: 15 };
+    } else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  },
   routes: [
     {
       path: "/",
@@ -18,7 +27,7 @@ const router = createRouter({
     {
       path: "/info/public",
       name: "publication",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Publication.vue"),
       meta: {
         title: "Публикация в каталоге",
       },
@@ -26,7 +35,7 @@ const router = createRouter({
     {
       path: "/info/foundling",
       name: "foundling",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Foundling.vue"),
       meta: {
         title: "Нашли животное?",
       },
@@ -66,7 +75,7 @@ const router = createRouter({
     {
       path: "/feedback",
       name: "feedback",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Feedback.vue"),
       meta: {
         title: "Есть вопрос? Спросите нас!",
       },

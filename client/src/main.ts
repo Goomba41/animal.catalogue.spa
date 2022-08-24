@@ -9,6 +9,10 @@ import {
   faCircleInfo,
   faThumbsUp,
   faArrowUp,
+  faArrowUpRightFromSquare,
+  faAnchor,
+  faCircleExclamation,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faVk,
@@ -16,7 +20,18 @@ import {
   faTelegram,
 } from "@fortawesome/free-brands-svg-icons";
 
-library.add(faVk, faInstagram, faTelegram, faCircleInfo, faThumbsUp, faArrowUp);
+library.add(
+  faVk,
+  faInstagram,
+  faTelegram,
+  faCircleInfo,
+  faThumbsUp,
+  faArrowUp,
+  faAnchor,
+  faArrowUpRightFromSquare,
+  faCircleExclamation,
+  faTriangleExclamation
+);
 
 // HttpClient
 import axios from "axios";
