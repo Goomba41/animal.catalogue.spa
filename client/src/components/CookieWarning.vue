@@ -28,7 +28,6 @@ onMounted(() => {
     role="alert"
     v-if="visible"
   >
-    {{ visible }}
     <div class="flex items-center">
       <font-awesome-icon
         :icon="['fas', 'circle-info']"

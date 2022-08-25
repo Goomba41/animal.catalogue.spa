@@ -134,3 +134,41 @@ a.attention {
 a:hover {
   @apply decoration-solid;
 }
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none !important;
+}
+
+[type="checkbox"]:checked {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20viewBox='0%200%2016%2016'%20fill='white'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M12.207%204.793a1%201%200%200%201%200%201.414l-5%205a1%201%200%200%201-1.414%200l-2-2a1%201%200%200%201%201.414-1.414L6.5%209.086l4.293-4.293a1%201%200%200%201%201.414%200z'/%3E%3C/svg%3E");
+}
+
+[type="checkbox"]:checked,
+[type="radio"]:checked {
+  background-color: currentColor;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-color: transparent;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* appearance: none; */
+  background-color: #fff;
+  background-origin: border-box;
+  border-width: 1px;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 1rem;
+  padding: 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  vertical-align: middle;
+  width: 1rem;
+}

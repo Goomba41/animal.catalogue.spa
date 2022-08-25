@@ -13,6 +13,7 @@ import {
   faAnchor,
   faCircleExclamation,
   faTriangleExclamation,
+  faPaperPlane,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faVk,
@@ -30,6 +31,7 @@ library.add(
   faAnchor,
   faArrowUpRightFromSquare,
   faCircleExclamation,
+  faPaperPlane,
   faTriangleExclamation
 );
 
