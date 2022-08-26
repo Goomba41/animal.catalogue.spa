@@ -26,7 +26,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Connect by ssh and deploy remote
+      - name: Connect by ssh
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
@@ -35,3 +35,9 @@ jobs:
           port: ${{ secrets.PORT }}
           script_stop: true
           script: ls -al
+          
+      - name: CD to folder and activate shell
+        run: |
+          cd sites/animal.catalogue.spa/
+          pipenv shell
+        
