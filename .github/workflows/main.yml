@@ -38,6 +38,7 @@ jobs:
           
       - name: CD to folder and activate shell
         run: |
+          ls -l
           cd sites/animal.catalogue.spa/
           pipenv shell
         
