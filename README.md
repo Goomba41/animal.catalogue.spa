@@ -1,1 +1,3 @@
-# animal.catalogue.spa
+![example workflow](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+
+# Site for animal shelter
