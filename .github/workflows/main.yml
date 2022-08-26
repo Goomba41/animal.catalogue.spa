@@ -37,7 +37,6 @@ jobs:
           script: |
             cd sites/animal.catalogue.spa/
             git pull
-            cd ~/.virtualenvs/animal.catalogue.spa-qTxOCkkS
-            ./bin/node bin/npm
+            pipenv run npm --prefix ~/sites/animal.catalogue.spa/client/ run lint
             
         
