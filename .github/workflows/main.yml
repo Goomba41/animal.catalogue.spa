@@ -37,8 +37,7 @@ jobs:
           script: |
             cd sites/animal.catalogue.spa/
             git pull
-            pipenv shell
-            cd client
-            npm run build
+            cd ~/.virtualenvs/animal.catalogue.spa-qTxOCkkS
+            ./bin/node bin/npm
             
         
