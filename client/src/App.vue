@@ -4,10 +4,11 @@ import { useMeta } from "vue-meta";
 import { RouterView } from "vue-router";
 
 import Logo from "@/components/Logo.vue";
+import Toast from "@/components/Toast.vue";
 import Footer from "@/components/Footer.vue";
+import BackToTop from "@/components/BackToTop.vue";
 import Navigation from "@/components/Navigation.vue";
 import CookieWarning from "@/components/CookieWarning.vue";
-import BackToTop from "@/components/BackToTop.vue";
 
 import { useLoadingStore } from "@/stores/loading";
 
@@ -94,6 +95,7 @@ useMeta({
 
   <CookieWarning />
   <BackToTop />
+  <!-- <Toast /> -->
 </template>
 
 <style scoped></style>
