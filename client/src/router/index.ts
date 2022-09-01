@@ -1,5 +1,5 @@
-import { createRouter, createWebHistory } from "vue-router";
 import NProgress from "nprogress";
+import { createRouter, createWebHistory } from "vue-router";
 
 import { useLoadingStore } from "@/stores/loading";
 
@@ -43,7 +43,7 @@ const router = createRouter({
     {
       path: "/info/opd",
       name: "opd",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Opd.vue"),
       meta: {
         title: "Обработка персональных данных",
       },
@@ -51,7 +51,7 @@ const router = createRouter({
     {
       path: "/info/cookie",
       name: "cookie",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Cookie.vue"),
       meta: {
         title: "Политика cookie",
       },
@@ -59,7 +59,7 @@ const router = createRouter({
     {
       path: "/support",
       name: "support",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Support.vue"),
       meta: {
         title: "Поддержите нас!",
       },
@@ -67,7 +67,7 @@ const router = createRouter({
     {
       path: "/adopted",
       name: "adopted",
-      component: () => import("../views/AboutView.vue"),
+      component: () => import("../views/Adopted.vue"),
       meta: {
         title: "Нашли дом!",
       },

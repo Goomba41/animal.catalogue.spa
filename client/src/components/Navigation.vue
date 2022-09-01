@@ -11,11 +11,11 @@ categoriesStore.fetchCategories();
 <template>
   <span
     v-if="loadingStore.loadingState"
-    class="skeleton-box rounded-full bg-primary-light-hover h-10 mb-5"
+    class="skeleton-box rounded-lg bg-primary-light-hover h-10 mb-5 w-2/3 self-center"
   ></span>
   <nav
     v-else
-    class="nav flex flex-row md:flex-row flex-wrap pl-0 pb-5 justify-center"
+    class="nav flex flex-row md:flex-row flex-wrap pl-0 pb-5 justify-center self-center"
     id="app_navigation"
     role="navigation"
     aria-label="Категории животных"

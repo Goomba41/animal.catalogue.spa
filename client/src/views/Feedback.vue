@@ -1,7 +1,48 @@
 <template>
   <h1 class="text-center my-7">Вопросы? Предложения? Сообщите нам!</h1>
 
+  <div
+    v-if="loadingStore.loadingState"
+    class="loading-skeleton items-center flex flex-col my-10"
+  >
+    <div class="w-2/3 2xl:w-2/5 xl:w-1/2 mb-6">
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-5 mb-2 w-1/2"
+      ></div>
+      <div class="skeleton-box rounded-lg bg-primary-light-hover h-11"></div>
+    </div>
+    <div class="w-2/3 2xl:w-2/5 xl:w-1/2 mb-6">
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-5 mb-2 w-1/2"
+      ></div>
+      <div class="skeleton-box rounded-lg bg-primary-light-hover h-11"></div>
+    </div>
+    <div class="w-2/3 2xl:w-2/5 xl:w-1/2 mb-6">
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-5 mb-2 w-1/2"
+      ></div>
+      <div class="skeleton-box rounded-lg bg-primary-light-hover h-11"></div>
+    </div>
+    <div class="w-2/3 2xl:w-2/5 xl:w-1/2 mb-6">
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-5 mb-2 w-1/2"
+      ></div>
+      <div class="skeleton-box rounded-lg bg-primary-light-hover h-28"></div>
+    </div>
+    <div
+      class="controls justify-between flex flex-col sm:flex-row w-2/3 2xl:w-2/5 xl:w-1/2"
+    >
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-11 w-3/5"
+      ></div>
+      <div
+        class="skeleton-box rounded-lg bg-primary-light-hover h-11 w-1/5"
+      ></div>
+    </div>
+  </div>
+
   <form
+    v-else
     class="items-center flex flex-col my-10"
     @submit.prevent="onSubmit"
     @reset.prevent="onReset"
@@ -42,15 +83,17 @@
       <label for="phone" class="block mb-2 text-sm font-medium"
         >Если не сможем ответить на почту, как с Вами связаться?
         <small class="text-gray-300 ml-4"
-          >Или если будут нужные дополнительные сведения</small
+          >Или если будут нужны дополнительные сведения</small
         ></label
       >
       <input
         type="phone"
+        ref="phone"
         id="phone"
         v-model.trim="form.phone"
         class="text-primary-dark bg-gray-50 border-2 border-primary-dark focus:ring-2 focus-visible:ring-primary-light-hover text-sm rounded-lg focus:ring-primary-light-hover focus:border-primary-light-hover block w-full p-2.5"
         placeholder="Ваш телефон"
+        v-mask="'+7 (___) ___ __ __'"
       />
 
       <!-- @input="$v.phone.$touch()"
@@ -177,7 +220,15 @@ import {
   helpers,
 } from "@vuelidate/validators";
 
+import { useLoadingStore } from "@/stores/loading";
+
+import { useCategoriesStore } from "@/stores/categories";
+const categoriesStore = useCategoriesStore();
+categoriesStore.fetchCategories();
+
 const axios: any = inject<typeof VueAxios>("axios");
+
+const loadingStore = useLoadingStore();
 
 const initialForm = {
   email: "",
@@ -265,6 +316,16 @@ function onReset() {
   // Сброс валидации
   $v.value.$reset();
 }
+
+const vMask = {
+  mounted: (el: any, binding: any) => {
+    console.log(el, binding);
+
+    el.addEventListener("focus", function (event: any) {
+      event.preventDefault();
+    });
+  },
+};
 </script>
 
 <style lang="css" scoped></style>
